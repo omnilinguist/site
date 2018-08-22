@@ -73,7 +73,7 @@ Defines the amount of memory (in MB) that the instance should allocate to build 
 | Default value  | 1024 |
 
 <div class="alert alert-info">
-Getting build errors like <b>Starting build... ERROR: not enough memory available to start process</b>? You should either reduce this parameter, or change the <a href="#instancetype">InstanceType</a> parameter to an <a href="https://aws.amazon.com/ec2/instance-types/">instance type</a> with more memory.
+Getting build errors like <b>Starting build... ERROR: not enough memory available to start process</b>? You should either reduce this parameter, or change the <a href="#buildinstance">BuildInstance</a> parameter to an <a href="https://aws.amazon.com/ec2/instance-types/">instance type</a> with more memory.
 </div>
 
 <div class="alert alert-warning">
