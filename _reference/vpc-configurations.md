@@ -7,7 +7,6 @@ When you [install a Rack](/docs/installing-a-rack/), most of the AWS resources u
 1. [Installing into an existing VPC](#installing-into-an-existing-vpc)
 1. [Installing a private Rack into an existing VPC](#installing-a-private-rack-into-an-existing-vpc)
 1. [Peering VPCs in the same region](#peering-vpcs-in-the-same-region)
-1. [Connecting VPCs in different regions](#connecting-vpcs-in-different-regions)
 
 ## Installing into an existing VPC
 
@@ -35,13 +34,13 @@ Installing a private Rack into an existing VPC requires specifying a few more op
 - Check the **Private** checkbox.
 - Provide the **Private CIDRs** for three private subnets, e.g. `10.0.4.0/24,10.0.5.0/24,10.0.6.0/24`.
 
-## Peering VPCs in the same region
+## Peering VPCs
 
 An alternative to installing a Convox Rack into an existing VPC is to install the Rack into its own isolated VPC and then peer that VPC with another containing your non-Convox infrastructure.
 
 > A VPC peering connection allows you to route traffic between the peer VPCs using private IP addresses; as if they are part of the same network.
 
-The above excerpt comes from the AWS [Peering Guide](http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/Welcome.html), a great place to learn more about this technique.
+ The above excerpt comes from the AWS [Peering Guide](http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/Welcome.html), a great place to learn more about this technique.
 
 If you are ready to set up a peering connection between two VPCs, the [Working with VPC Peering Connections](http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/working-with-vpc-peering.html) section of that guide walks you through the steps, which include the following and more:
 
@@ -50,18 +49,7 @@ If you are ready to set up a peering connection between two VPCs, the [Working w
 * Updating Route Tables for Your VPC Peering Connection
 * Updating Your Security Groups to Reference Peered VPC Security Groups
 
-Keep in mind that VPC Peering has a number of [limitations](http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-overview.html#vpc-peering-limitations) that can complicate its setup. For example, you cannot create a VPC peering connection between VPCs that have matching or overlapping CIDR blocks, or between VPCs that exist in different regions.
-
-## Connecting VPCs in different regions
-
-Because VPC peering is limited to VPCs in the same region, you'll need to take a different approach to connect VPCs in different regions. At the moment, the standard practice is to run an EC2 instance in each VPC and establish an IPSec VPN connection between them. The following two guides offer step-by-step instructions for that setup.
-
-* AWS recommends [Connecting Multiple VPCs with EC2 Instances](https://aws.amazon.com/articles/5472675506466066)
-* FortyCloud's [Interconnecting Two AWS VPC Regions](http://fortycloud.com/interconnecting-two-aws-vpc-regions/) covers the same approach in greater detail
-
-When AWS [released VPC Peering](https://aws.amazon.com/blogs/aws/new-vpc-peering-for-the-amazon-virtual-private-cloud/) in 2014, it expressed an intent to build cross-region peering in the future (see excerpt below), so keep an eye out for first-class support in AWS one of these days.
-
-> You can connect any two VPCs that are in the same AWS Region, regardless of ownership, as long as both parties agree. We plan to extend this feature to support cross-Region peering in the future. 
+Keep in mind that VPC Peering has a number of [limitations](http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-overview.html#vpc-peering-limitations) that can complicate its setup. For example, you cannot create a VPC peering connection between VPCs that have matching or overlapping CIDR blocks.
 
 ## See also
 

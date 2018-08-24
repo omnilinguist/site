@@ -93,12 +93,13 @@ A resource is a network-attached dependency of your application. This example co
 
 #### redis
 
-| Option    | Default          | Description        |
-|-----------|------------------|--------------------|
-| `class`   | `cache.t2.micro` | Instance class     |
-| `durable` | `false`          | Automatic failover |
-| `nodes`   | `1`              | Number of nodes    |
-| `version` | `2.8.24`         | Redis version      |
+| Option      | Default          | Description          |
+|-------------|------------------|----------------------|
+| `class`     | `cache.t2.micro` | Instance class       |
+| `durable`   | `false`          | Automatic failover   |
+| `encrypted` | `false`          | Encrypt data at rest |
+| `nodes`     | `1`              | Number of nodes      |
+| `version`   | `2.8.24`         | Redis version        |
 
 #### postgres
 
@@ -134,6 +135,29 @@ services:
 ```
 
 ### agent
+
+The `agent` attribute may be used to define that this service should start one container on every instance.
+
+This is useful for services that gather metrics or perform other instance-level behaviors.
+
+You can use this attribute in one of two format:
+
+```yaml
+services:
+  monitor:
+    agent: true
+```
+
+or if your agent needs to open host-level ports then use this format:
+
+```yaml
+services:
+  datadog:
+    agent:
+      ports:
+        - 8125/udp
+        - 8126/tcp
+```
 
 Set to `true` to run one copy of this container on every instance.
 
