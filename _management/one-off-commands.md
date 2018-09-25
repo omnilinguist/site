@@ -13,7 +13,7 @@ Convox allows you to execute individual commands on your containers in several d
 
 **To run a command in a local container...**
 
-* in a new container: `convox start [service] [command]`
+* in a new container: `convox run [service] [command]`
 * in a running container: There is no `convox` command for this. Use [`docker exec` instead](https://docs.docker.com/engine/reference/commandline/exec/).
 </div>
 
